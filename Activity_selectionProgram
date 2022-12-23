@@ -1,0 +1,16 @@
+#activity selection problem is the implementation that assumes the activities are already sorted according to their finish time
+#TIME COMPLEXITY: O(N)
+#SPACE COMPLEXITY: O(1)
+def printMaxActivity(s,f):
+    n = len(f)
+    print("Following activities are selected")
+    i=0
+    print (i, end=' ')
+    for j in range(1, n):
+        if s[j] >= f[i]:
+            print(j, end= ' ')
+            i=j
+if __name__ == '__main__':
+    s=[8,2,9,1,0]
+    f=[1,4,3,7,5]
+    printMaxActivity(s,f)
