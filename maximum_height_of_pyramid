@@ -1,0 +1,29 @@
+#maximum height of pyramid
+#The idea is to use greedy approach by placing the object with the lowest width at the top, the next object at the
+#level right below and so on.
+#To find the maximum number of levels, sort the given array and try to form pyramid from top to bottom. 
+#Find the smallest element of array i.e first element of array after sorting, place it on the top. 
+#Then try to build levels below it with greater number of objects and greater width.
+#Time Complexity : O(n log n)
+def maxLevel(boxes,n):
+    boxes.sort()
+    ans = 1
+    prev_width = boxes[0]
+    prev_count = 0
+    curr_count = 0
+    curr_width = 0
+    for i in range(1,n):
+        curr_width += boxes[i]
+        curr_count += 1
+        if(curr_width>prev_width and curr_count>prev_count):
+            prev_width = curr_width
+            prev_count = curr_count
+            curr_count = 0
+            curr_width = 0
+            ans += 1
+    return ans
+    
+if __name__ == '__main__':
+    boxes = [10,50,70,80,90]
+    n = len(boxes)
+    print(maxLevel(boxes,n))
